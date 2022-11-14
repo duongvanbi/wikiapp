@@ -1,12 +1,33 @@
-<h1>Category</h1>
 
-<ul>
-  <% @categories.each do |categorie| %>
-    <li>
+<div class="alert alert-info text-center" role="alert">
+<h1>Category</h1>
+</div>
+<div class="text-center" style="margin-top:50px;margin-bottom:50px;">
+<button type="button" class="btn btn-outline-primary" ><%= link_to "New category", new_category_path %></button>
+<button type="button" class="btn btn-outline-success"><%= link_to "Back to home", root_path %></button>
+</div>
+<table class="table container">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Types</th>
+    </tr>
+  </thead>
+  <% @categories.each do |category| %>
+  <tbody>
+  
+    <tr>
     
-    <%= link_to categorie.title, categorie %>
-    </li>
+      
+      <td><%= link_to category.title, category %></td>
+      <td><%=  category.description%></td>
+      <td><%=  category.category_type%></td>
+    </tr>
+    
+  </tbody>
   <% end %>
-</ul>
-<%= link_to "New category", new_category_path %>
-<li><%= link_to "Back to home", root_path %></li>
+</table>
+
+
+

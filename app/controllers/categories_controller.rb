@@ -4,41 +4,41 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
   def show
-    @categorie = Category.find(params[:id])
+    @category = Category.find(params[:id])
   end
   def new
-    @categorie = Category.new
+    @category = Category.new
   end
   def create
-    @categorie = Category.new(categories_params)
+    @category = Category.new(categories_params)
 
-    if @categorie.save
-      redirect_to @categorie
+    if @category.save
+      redirect_to @category
     else
       render :new, status: :unprocessable_entity
     end
   end
   def edit
-    @categorie= Category.find(params[:id])
+    @category= Category.find(params[:id])
   end
   def update
-    @categorie = Category.find(params[:id])
+    @category = Category.find(params[:id])
 
-    if @categorie.update(categories_params)
-      redirect_to @categorie
+    if @category.update(categories_params)
+      redirect_to @category
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @categorie = Category.find(params[:id])
-    @categorie.destroy
+    @category = Category.find(params[:id])
+    @category.destroy
 
     redirect_to categories_path, status: :see_other
   end
   private
     def categories_params
-      params.require(:category).permit(:title, :description, :types)
+      params.require(:category).permit(:title, :description, :category_type)
     end
 end
